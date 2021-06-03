@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <title>Ranking Leitores</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="header :: header"></div>
+<h1 align="center">Ranking de leitores cadastrados</h1>
+<div th:if="${!leitores.isEmpty()}" class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <th>Nome</th>
+        <th>Pontos</th>
+        </thead>
+        <tbody>
+        <tr th:each="leitor: ${leitores}">
+            <td th:text="${leitor.nome}"></td>
+            <td th:text="${leitor.pontos}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

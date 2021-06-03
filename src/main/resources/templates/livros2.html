@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <title>Livros</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <link rel="shortcut icon" href=""/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+</head>
+<body>
+<div th:insert="header :: header"></div>
+<h1 align="center">Lista de livros cadastrados</h1>
+<div th:if="${!livros.isEmpty()}" class="container">
+        <form th:action="@{/livros}" th:object="${leitor}" method="post">
+
+            <ul>
+                <li th:each="livro : ${livros}">
+                    <a class="btn btn-success" th:href="@{/livros/{id}(id=${livro.id})}">Ver livro</a>
+                    <input type="checkbox" th:field="*{livrosLidosSet}" th:value="${livro.id}" />
+                    <label th:for="${#ids.prev('livrosLidosSet')}"
+                           th:text="${livro.titulo}"></label>
+                </li>
+
+
+                <div class="form-group">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <input type="submit"
+                               name="livros-submit"
+                               id="livros-submit"
+                               class="form-control btn btn-info"
+                               value="Enviar">
+                    </div>
+                </div>
+            </div>
+        </form>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

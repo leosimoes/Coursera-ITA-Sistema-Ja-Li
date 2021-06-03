@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <title>Livro</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="header :: header"></div>
+<div th:if="${livro != null}" class="container">
+    <h1 align="center">Livro</h1>
+    <table class="table">
+        <thead class="thead-dark">
+        </thead>
+        <tbody>
+        <tr>
+            <td>Título: </td>
+            <td th:text="${livro.titulo}"></td>
+        </tr>
+        <tr>
+            <td>Autores: </td>
+            <td th:text="${livro.nomesAutores}"></td>
+        </tr>
+        <tr>
+            <td>Número de páginas: </td>
+            <td th:text="${livro.numeroPaginas}"></td>
+        </tr>
+        <tr>
+            <td>Estilo: </td>
+            <td th:text="${livro.estilo}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="footer :: footer"></div>
+</body>
+</html>
